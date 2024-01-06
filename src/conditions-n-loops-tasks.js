@@ -179,8 +179,38 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let res = '';
+  const numArr = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+    'minus',
+    'point',
+  ];
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      default:
+        if (numberStr[i] === '-') {
+          res += numArr[10];
+        } else if (numberStr[i] === '.' || numberStr[i] === ',') {
+          res += numArr[11];
+        } else {
+          res += numArr[numberStr[i]];
+        }
+        if (i !== numberStr.length - 1) {
+          res += ' ';
+        }
+    }
+  }
+  return res;
 }
 
 /**
@@ -195,8 +225,15 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const iteration = Math.trunc(str.length / 2);
+  for (let i = 0; i <= iteration; i += 1) {
+    const k = str.length - 1 - i;
+    if (str[i] !== str[k]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -213,8 +250,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -232,8 +274,14 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  const numStr = String(num);
+  for (let i = 0; i < numStr.length; i += 1) {
+    if (numStr[i] === String(digit)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
