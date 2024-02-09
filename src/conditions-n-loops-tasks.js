@@ -444,14 +444,14 @@ function sortByAsc(arr) {
   const iteration = arr.length;
   const resArr = arr;
 
-  for (let k = 0; k < iteration; k += 1) {
-    for (let i = 0; i < resArr.length - 1; i += 1) {
-      if (resArr[i] > resArr[i + 1]) {
-        const prev = resArr[i];
-        resArr[i] = resArr[i + 1];
-        resArr[i + 1] = prev;
-      }
+  for (let k = 1; k < iteration; k += 1) {
+    const curr = resArr[k];
+    let prev = k - 1;
+    while (prev >= 0 && resArr[prev] > curr) {
+      resArr[prev + 1] = resArr[prev];
+      prev -= 1;
     }
+    resArr[prev + 1] = curr;
   }
   return resArr;
 }
